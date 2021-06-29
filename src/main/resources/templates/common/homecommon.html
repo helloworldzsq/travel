@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header th:fragment="topbar">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" th:href="@{/}" th:value="${session.userName}">[[${session.userName}]]</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<aside class="col-sm-3 col-md-2 col-lg-2 sidebar" th:fragment="sidebar">
+    <ul class="nav nav-sidebar">
+        <li th:class="${active=='index'?'nav-link active':'nav-link'}"><a th:href="@{/tohome}">个人主页</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li th:class="${active=='program'?'nav-link active':'nav-link'}"><a th:href="@{/toprogram}">项目管理</a></li>
+        <li th:class="${active=='setting'?'nav-link active':'nav-link'}"><a th:href="@{/tosetting}">设置</a></li>
+        <li th:class="${active=='message'?'nav-link active':'nav-link'}"><a th:href="@{/tomessage}">消息</a></li>
+        <li th:class="${active=='help'?'nav-link active':'nav-link'}"><a th:href="@{help.md}">帮助文档</a></li>
+        <li><a th:href="@{/}">退出</a></li>
+    </ul>
+</aside>
+
+</body>
+</html>

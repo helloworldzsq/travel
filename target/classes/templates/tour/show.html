@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-US" data-menu="leftalign" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="shortcut icon" th:href="@{travel/upload/TG-Thumb.png}" />
+    <title>Travel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel='stylesheet' th:href='@{travel/css/icons.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster-light.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/animations.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/responsive.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/fontawesome-stars-o.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/frontend.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/settings.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/reset.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/wordpress.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/animation.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/ilightbox.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/custom-ui.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/mediaelementplayer-legacy.min.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/flexslider.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/odometer-theme-minimal.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/screen.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/leftalignmenu.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/font-awesome.min.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/themify-icons.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/grid.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/style.css}' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Work+Sans%3A700%2C700%2C700%2C700%2C700%2C100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CPoppins%3A700%2C700%2C700%2C700%2C700%2C100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;subset' type='text/css' media='all' />
+
+
+
+</head>
+
+<body class="home page-template-default page page-id-3102 woocommerce-no-js ppb_enable">
+
+    <!-- Begin template wrapper -->
+    <div id="wrapper" class="hasbg transparent">
+        <div th:replace="~{common/common::topbar}"></div>
+    </div>
+    <div id="page_caption" class="hasbg parallax" th:style="'background-image:url('+${program.getPictureUrl()}+');'">
+            <div class="single_tour_header_content">
+                <div class="standard_wrapper">
+                    <a th:href="@{travel/upload/pexels-photo-96420.jpeg}" id="single_tour_gallery_open" class="button fancy-gallery"><span class="ti-camera"></span>View Photos</a>
+                    <div style="display:none;">
+                        <a id="single_tour_gallery_image2" th:href="@{travel/upload/Tokyo_Dollarphotoclub_72848283-copy.jpg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                        <a id="single_tour_gallery_image3" th:href="@{travel/upload/venice-WBEUROCITIES16.jpg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                        <a id="single_tour_gallery_image4" th:href="@{travel/upload/pexels-photo-197657.jpeg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                        <a id="single_tour_gallery_image5" th:href="@{travel/upload/bf1202aedf2c5b6a57d379575619a488.jpg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                        <a id="single_tour_gallery_image6" th:href="@{travel/upload/pexels-photo-24484.jpg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                        <a id="single_tour_gallery_image7" th:href="@{travel/upload/39267772-prague-wallpapers.jpg}" title="The road to success and the road to failure are almost exactly the same" class="fancy-gallery"></a>
+                    </div>
+
+                    <a href="#video_review168" id="single_tour_video_preview_open" class="button" data-type="inline"><span class="ti-control-play"></span>Video Preview</a>
+
+                    <div id="video_review168" class="tour_video_preview_wrapper" style="display:none;">
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/CwA0w3CFhjU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Begin content -->
+        <div id="page_content_wrapper" class="hasbg ">
+            <div class="inner">
+                <!-- Begin main content -->
+                <div class="inner_wrapper">
+
+                    <div class="sidebar_wrapper">
+
+                        <div class="sidebar_top"></div>
+
+                        <div class="sidebar">
+
+                            <div class="content">
+
+                                <div class="single_tour_booking_wrapper themeborder contact_form7">
+                                    <div role="form" class="wpcf7" id="wpcf7-f142-o1" lang="en-US" dir="ltr">
+                                        <div class="screen-reader-response"></div>
+<!--                                        想参加的话，提交的个人信息-->
+                                        <form th:action="@{/submit}" method="post" class="wpcf7-form" novalidate="novalidate">
+                                            <p>
+                                                <label> Full Name
+                                                    <br />
+                                                    <span class="wpcf7-form-control-wrap your-name"><input type="text" name="name"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="John Doe" required="required" /></span> </label>
+                                            </p>
+                                            <p>
+                                                <label> Email Address
+                                                    <br />
+                                                    <span class="wpcf7-form-control-wrap your-email"><input type="email" name="email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="sample@yourcompany.com" required="required"/></span> </label>
+                                            </p>
+                                            <p>
+                                                <label> Phone Number
+                                                    <br />
+                                                    <span class="wpcf7-form-control-wrap tel-729"><input type="tel" name="telephone"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" required="required"/></span> </label>
+                                            </p>
+                                            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                                            <p>
+                                                <input type="submit" value="Book This Tour" class="wpcf7-form-control wpcf7-submit" />
+                                            </p>
+                                            <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                        </form>
+
+                                    </div>
+
+                                    <br class="clear" />
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br class="clear" />
+
+                        <div class="sidebar_bottom"></div>
+                    </div>
+                    <div class="sidebar_content ">
+
+                        <h1 th:text="${program.getTitle()}"></h1>
+                        <div class="single_tour_attribute_wrapper themeborder ">
+                            <div class="one_fourth">
+                                <div class="tour_attribute_icon ti-calendar"></div>
+                                <div class="tour_attribute_content" th:text="${time}">
+                                </div>
+                            </div>
+
+                            <div class="one_fourth">
+                                <div class="tour_attribute_icon ti-time"></div>
+                                <div class="tour_attribute_content" th:text="${program.getPlace()}">
+                                     </div>
+                            </div>
+
+                            <div class="one_fourth">
+                                <div class="tour_attribute_icon ti-id-badge"></div>
+                                <div class="tour_attribute_content" th:text="${program.getBudget()}">
+                                     </div>
+                            </div>
+
+                            <div class="one_fourth last">
+                                <div class="tour_attribute_icon ti-user"></div>
+                                <div class="tour_attribute_content" th:text="${program.getUserNum()}">
+                                    </div>
+                            </div>
+
+                        </div>
+                        <br class="clear" />
+<!--                        正文-->
+                            <div id="doc-content" style="width: 80%">
+                                <textarea style="display:none;" placeholder="markdown" th:text="${program.info}"></textarea>
+                            </div>
+                        <br class="clear" />
+                        </li>
+                    </div>
+                    <br class="clear" />
+                </div>
+                <br class="clear" />
+            </div>
+
+            <!-- End of thread -->
+            <div style="height:10px"></div>
+            </div>
+            </div>      
+        </div>
+    </div>
+    <!-- End main content -->
+    <br class="clear"/>
+    <div th:replace="~{common/common::footerbar}"></div>
+
+    <div id="side_menu_wrapper" class="overlay_background">
+        <a id="close_share" href="javascript:;"><span class="ti-close"></span></a>
+
+    </div>
+
+
+<!--markdown-->
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.css}" />
+    <script th:src="@{/editormd/examples/js/jquery.min.js}"></script>
+    <script th:src="@{/editormd/lib/marked.min.js}"></script>
+    <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+    <script th:src="@{/editormd/lib/raphael.min.js}"></script>
+    <script th:src="@{/editormd/lib/underscore.min.js}"></script>
+    <script th:src="@{/editormd/lib/sequence-diagram.min.js}"></script>
+    <script th:src="@{/editormd/lib/flowchart.min.js}"></script>
+    <script th:src="@{/editormd/lib/jquery.flowchart.min.js}"></script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
+
+    <script type="text/javascript">
+        var testEditor;
+        $(function () {
+            testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tocm: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true
+            });
+        });
+    </script>
+
+
+    <script th:src='@{travel/js/jquery.js}'></script>
+    <script th:src='@{travel/js/jquery-migrate.min.js}'></script>
+    <script th:src='@{travel/js/plugins/core.min.js}'></script>
+    <script th:src='@{travel/js/plugins/datepicker.min.js}'></script>
+    <script th:src='@{travel/js/plugins/spin.min.js}'></script>
+    <script th:src='@{travel/js/plugins/spin.jquery.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.tooltipster.min.js}'></script>
+    <script th:src='@{travel/js/plugins/functions.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.blockUI.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.requestAnimationFrame.js}'></script>
+    <script th:src='@{travel/js/plugins/ilightbox.packed.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.easing.js}'></script>
+    <script th:src='@{travel/js/plugins/waypoints.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.isotope.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.masory.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.tooltipster.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jarallax.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.sticky-kit.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.stellar.min.js}'></script>
+    <script th:src='@{travel/js/plugins/custom_plugins.js}'></script>
+    <script th:src='@{travel/js/plugins/custom.js}'></script>
+    <script th:src='@{travel/js/plugins/custom_onepage.js}'></script>
+    <script th:src='@{travel/js/plugins/jarallax-video.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.cookie.js}'></script>
+
+    <script type='text/javascript'>
+        jQuery(document).ready(function(jQuery) {
+            jQuery.datepicker.setDefaults({
+                "closeText": "Close",
+                "currentText": "Today",
+                "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                "monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                "nextText": "Next",
+                "prevText": "Previous",
+                "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"],
+                "dateFormat": "MM d, yy",
+                "firstDay": 1,
+                "isRTL": false
+            });
+        });
+    </script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var booked_js_vars = {
+            "ajax_url": "#",
+            "profilePage": "",
+            "publicAppointments": "",
+            "i18n_confirm_appt_delete": "Are you sure you want to cancel this appointment?",
+            "i18n_please_wait": "Please wait ...",
+            "i18n_wrong_username_pass": "Wrong username\/password combination.",
+            "i18n_fill_out_required_fields": "Please fill out all required fields.",
+            "i18n_guest_appt_required_fields": "Please enter your name to book an appointment.",
+            "i18n_appt_required_fields": "Please enter your name, your email address and choose a password to book an appointment.",
+            "i18n_appt_required_fields_guest": "Please fill in all \"Information\" fields.",
+            "i18n_password_reset": "Please check your email for instructions on resetting your password.",
+            "i18n_password_reset_error": "That username or email is not recognized."
+        };
+        /* ]]> */
+    </script>
+</body>
+</html>

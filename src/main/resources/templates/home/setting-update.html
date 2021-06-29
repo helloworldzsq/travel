@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>homepage</title>
+<link rel="stylesheet" type="text/css" th:href="@{/homepage/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/homepage/css/style.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/homepage/css/font-awesome.min.css}">
+<link rel="apple-touch-icon-precomposed" th:href="@{/homepage/images/icon/icon.png}">
+<link rel="shortcut icon" th:href="@{/homepage/images/icon/favicon.ico}">
+<script th:src="@{/homepage/js/jquery-2.1.4.min.js}"></script>
+  <!--[if gte IE 9]>
+   <script th:src="@{/homepage/js/jquery-1.11.1.min.js}" type="text/javascript"></script>
+   <script th:src="@{/homepage/js/html5shiv.min.js}" type="text/javascript"></script>
+   <script th:src="@{/homepage/js/respond.min.js}" type="text/javascript"></script>
+   <script th:src="@{/homepage/js/selectivizr-min.js}" type="text/javascript"></script>
+  <![endif]-->
+ <!--[if lt IE 9]>
+   <script>window.location.href='upgrade-browser.html';</script>
+ <![endif]-->
+</head>
+
+<body class="user-select">
+<section class="container-fluid">
+ <div th:replace="~{common/homecommon::topbar}"></div>
+  <div class="row">
+    <div th:replace="~{common/homecommon::sidebar(active='setting')}"></div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <h1 class="page-header">个人信息</h1>
+        <form class="form-horizontal" th:action="@{/SetUpdate}">
+            <input name="id" th:value="${user.getId()}" type="hidden">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="username" th:value="${user.getUsername()}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="password" th:value="${user.getPassword()}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" th:value="${user.getName()}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="email" th:value="${user.getEmail()}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">电话号码</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="telephone" th:value="${user.getTelephone()}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</section>
+
+<script th:src="@{/homepage/js/bootstrap.min.js}"></script>
+<script th:src="@{/homepage/js/admin-scripts.js}"></script>
+
+</body>
+</html>

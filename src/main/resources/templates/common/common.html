@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--topbar-->
+<div class="header_style_wrapper" th:fragment="topbar">
+    <!-- End top bar -->
+    <div class="top_bar hasbg">
+        <div class="standard_wrapper">
+        <div class="standard_wrapper">
+            <!-- Begin logo -->
+            <div id="logo_wrapper">
+                <div id="logo_normal" class="logo_container">
+                    <div class="logo_align">
+                        <a id="custom_logo" class="logo_wrapper hidden" href="index.html">
+                            <img th:src="@{travel/upload/logo@2x.png}" alt="" width="92" height="22" />
+                        </a>
+                    </div>
+                </div>
+
+                <div id="logo_transparent" class="logo_container">
+                    <div class="logo_align">
+                        <a id="custom_logo_transparent" class="logo_wrapper default" href="index.html">
+                            <img th:src="@{travel/upload/logo@2x_white.png}" alt="" width="92" height="22" />
+                        </a>
+                    </div>
+                </div>
+                <!-- End logo -->
+                <div id="menu_wrapper">
+                    <div id="nav_wrapper">
+                        <div class="nav_wrapper_inner">
+                            <div id="menu_border_wrapper">
+                                <div class="menu-main-menu-container">
+                                    <ul id="main_menu" class="nav" >
+                                        <li th:if="${#strings.isEmpty(session.userName)}">
+                                            <a href="#" style="color: #8c92a4;font-size: larger" th:href="@{/tologin}">登录</a>
+                                            <a href="#" style="color: #8c92a4;font-size: larger" th:href="@{/toregister}">注册</a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children" th:if="${not #strings.isEmpty(session.userName)}">
+                                            <a style="color: #00C3F3;font-size: larger" th:text="${session.userName}" th:href="@{/tohome}"></a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item"><a th:href="@{/tohome}">个人主页</a></li>
+                                                <li class="menu-item"><a th:href="@{/toadd}">添加项目</a></li>
+                                                <li class="menu-item"><a th:href="@{/tosetting}">设置</a></li>
+                                                <li class="menu-item"><a th:href="@{/tomessage}">消息</a></li>
+                                                <li class="menu-item"><a th:href="@{help.md}">帮助文档</a></li>
+                                                <li class="menu-item"><a th:href="@{/logout}">退出</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End right corner buttons -->
+                    </div>
+                    <!-- End main nav -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="footer" class=" ppb_wrapper" th:fragment="footerbar">
+    <ul class="sidebar_widget three">
+        <li id="text-2" class="widget widget_text">
+            <h2 class="widgettitle">Our Awards</h2>
+            <div class="textwidget">
+                <p>London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom.
+                    <br />
+                    <img th:src="@{travel/upload/awards.png}" width="246" height="113" style="margin-top:30px;" alt="" /></p>
+            </div>
+        </li>
+        <li id="text-4" class="widget widget_text">
+            <h2 class="widgettitle">Contact Info</h2>
+            <div class="textwidget">
+                <p><span class="ti-mobile" style="margin-right:10px;"></span>15506175937</p>
+                <p><span class="ti-location-pin" style="margin-right:10px;"></span>江苏省苏州市虎丘区苏州科技大学</p>
+                <p><span class="ti-alarm-clock" style="margin-right:10px;"></span>Mon - Sat 8.00 - 18.00 Sunday CLOSED</p>
+                <div style="margin-top:20px;">
+                    <div class="social_wrapper shortcode dark ">
+                        <ul>
+                            <li class="facebook"><a target="_blank" title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a target="_blank" title="Twitter" href="https://twitter.com/#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="youtube"><a target="_blank" title="Youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li class="pinterest"><a target="_blank" title="Pinterest" href="https://pinterest.com/#"><i class="fa fa-pinterest"></i></a></li>
+                            <li class="instagram"><a target="_blank" title="Instagram" href="https://instagram.com/theplanetd"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li id="grandtour_flickr-7" class="widget Grandtour_Flickr">
+            <h2 class="widgettitle">Recent Trips</h2>
+            <ul class="flickr">
+                <li>
+                    <a target="_blank" href="#"><img th:src="@{travel/upload/28760131762_e4a64b20c4_q.jpg}" alt="Buddha Sunrise in Borobudur, Magelang, Central Java, Indonesia" width="75" height="75" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="#"><img th:src="@{travel/upload/27308262031_a6ebf0572e_q.jpg}" alt="Gentoo Penguins, Falkland Islands (Islas Malvinas), British Overseas Territory" width="75" height="75" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="#"><img th:src="@{travel/upload/27287965356_60355f51d7_q.jpg}" alt="Aerial View of Singapore CBD Skyline, Marina Bay Esplanade and Raffles Place, Singapore" width="75" height="75" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="#"><img th:src="@{travel/upload/27138570412_d25002a5c9_q.jpg}" alt="View Of Sugarloaf Mountain, Botafogo And The City of Rio De Janeiro, Brazil, South America" width="75" height="75" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="#"><img th:src="@{travel/upload/26520497604_1df03a02bc_q.jpg}" alt="Sacre Coeur (Basilica of the Sacred Heart of Paris), Paris, France :: HDR" width="75" height="75" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="#"><th:img th:src="@{travel/upload/27012097142_f1511b67bc_q.jpg}" alt="The Great Gate (Darwaza-i rauza) of Taj Mahal, Agra, Uttar Pradesh, India :: HDR" width="75" height="75" /></a>
+                </li>
+            </ul>
+            <br class="clear" />
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

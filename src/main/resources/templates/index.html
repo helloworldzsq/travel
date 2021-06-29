@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org" data-menu="leftalign">
+
+<head>
+
+    <link rel="shortcut icon"  th:href="@{travel/upload/TG-Thumb.png}" />
+
+    <title>GTour | Travel Tour HTML Template</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="format-detection" content="telephone=no">
+  
+    <link rel='stylesheet' th:href="@{travel/css/icons.css}" type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster-light.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/animations.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/responsive.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/fontawesome-stars-o.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/frontend.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/settings.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/reset.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/wordpress.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/animation.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/ilightbox.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/custom-ui.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/mediaelementplayer-legacy.min.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/flexslider.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/tooltipster.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/odometer-theme-minimal.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/screen.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/leftalignmenu.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/font-awesome.min.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/themify-icons.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/grid.css}' type='text/css' media='all' />
+    <link rel='stylesheet' th:href='@{travel/css/style.css}' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Work+Sans%3A700%2C700%2C700%2C700%2C700%2C100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CPoppins%3A700%2C700%2C700%2C700%2C700%2C100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;subset' type='text/css' media='all' />
+
+    <style>
+        /* 分页 */
+        #pages .page-center{
+            float: left;
+            transform: translateX(100%);
+        }
+        #pages ul li{
+            display:block;
+            float:left;
+            height:36px;
+            text-align:center;
+            line-height:36px;
+            margin-right:5px;
+            color:#a9a9a9;
+        }
+        #pages ul li a , #pages ul li span{
+            display:block;
+            float:left;
+            background:#fff;
+            padding:0 15px;
+            height:36px;
+            text-align:center;
+            line-height:36px;
+            color:#a9a9a9;
+        }
+        #pages ul li span{
+            background: #0068b7;
+            color:#fff;
+        }
+        #pages ul li a:hover{
+            background-color:#969696;
+            color:#fff;
+        }
+        /*#pages ul .prev a{*/
+        /*    background:#fff url(../images/icons.png) no-repeat -52px -217px;*/
+        /*}*/
+        /*#pages ul .next a{*/
+        /*    background:#fff url(../images/icons.png) no-repeat -75px -247px;*/
+        /*}*/
+        #pages ul .prev a:hover{
+            background-position:-76px -217px;
+        }
+        #pages ul .next a:hover{
+            background-position:-50px -247px;
+        }
+    </style>
+
+</head>
+
+<body class="home page-template-default page page-id-3102 woocommerce-no-js ppb_enable">
+
+
+    <!-- Begin template wrapper -->
+<div id="wrapper" class="hasbg transparent">
+    <div th:replace="~{common/common::topbar}"></div>
+<!--主页-->
+        <div class="ppb_wrapper  ">
+            <div class="one withsmallpadding ppb_tour_search_background parallax withbg " style="text-align:center;height:800px;background-image:url(travel/upload/pexels-photo-225630.jpeg);background-position: center center;color:#ffffff;">
+                <div class="overlay_background" style="background:#000000;background:rgb(0,0,0,0);background:rgba(0,0,0,0);"></div>
+                <div class="center_wrapper">
+                    <div class="inner_content">
+                        <div class="standard_wrapper">
+                            <h2 class="ppb_title" style="color:#ffffff;">Where do you want to go?</h2>
+                            <div class="page_tagline" style="color:#ffffff;">Trips, experiences, and places. All in one service.</div>
+                            <form id="tour_search_form" class="tour_search_form" method="get" th:action="@{/search}">
+                                <div class="tour_search_wrapper">
+                                    <div class="one_fourth themeborder">
+                                        <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" />
+                                        <span class="ti-search"></span>
+                                        <div id="autocomplete" class="autocomplete" data-mousedown="false"></div>
+                                    </div>
+                                    <div class="one_fourth themeborder">
+                                        <input name="date" type="date" th:value="${#dates.format(date,'yyyy-MM-dd')}"></input>
+                                        <span class="ti-calendar"></span>
+                                    </div>
+                                    <div class="one_fourth themeborder">
+                                        <input id="budget" name="budget" type="text" placeholder="Max budget ex. 500" />
+                                        <span>$</span>
+                                    </div>
+                                    <div class="one_fourth last themeborder">
+                                        <input id="tour_search_btn" type="submit" class="button" value="Search" />
+                                    </div>
+                                    <br class="clear" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        项目展示-->
+        <div class="one withsmallpadding ppb_header " style="text-align:center;padding:0px 0 0px 0;margin-top:70px;">
+            <div class="standard_wrapper">
+                <div class="page_content_wrapper">
+                    <div class="inner">
+                        <div style="margin:auto;width:100%">
+                            <h2 class="ppb_title" style="">Popular Destinations</h2>
+                            <div class="page_tagline" style="">World&#039;s best tourist destinations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ppb_destination_grid one nopadding " style="margin-top:50px;margin-bottom:50px;">
+            <div class="page_content_wrapper page_main_content sidebar_content full_width fixed_column">
+                <div class="standard_wrapper">
+                    <div id="15675891342113546341" class="portfolio_filter_wrapper gallery grid portrait four_cols" data-columns="4">
+
+                        <div class="element grid baseline classic4_cols animated1" th:each="list : ${programs}">
+                            <div class="one_fourth gallery4 grid static filterable portfolio_type themeborder" th:style="'background-image:url('+${list.getPictureUrl()}+');'">
+                                <a class="tour_image" th:href="@{/toshow}+${list.getId()}"></a>
+                                <div class="portfolio_info_wrapper">
+                                    <div class="portfolio_info_content">
+                                        <h3 th:text="${list.getPlace()}"></h3></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- 分页 -->
+    <div id="pages" class="pb-50 mtb-25">
+        <div class="common">
+            <ul>
+                <ul class="clearfix page-center">
+                    <li><a class="prev" th:href="(${num}-1)==0?'javascript:void(0)':@{'/page'+(${num}-1)}">上一页</a></li>
+<!--                    <li><span class="current">1</span></li>-->
+                    <li  th:each=" i : ${#numbers.sequence(1,pageNum)}">
+                        <a class="num" th:href="@{/page}+${i}" th:text="${i}">
+                        </a>
+                    </li>
+                    <li><a class="next" th:href="((${num}+1)>=${pageNum})?'javascript:void(0)':@{'/page'+(${num}+1)}">下一页</a></li>
+                </ul>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="parallax" data-jarallax-video="https://www.youtube.com/watch?v=JPe2mwq96cw" style="height:40vh; "></div>
+</div>
+<!-- 底部   -->
+    <div th:replace="~{common/common::footerbar}"></div>
+
+
+    <div id="side_menu_wrapper" class="overlay_background">
+        <a id="close_share" href="javascript:;"><span class="ti-close"></span></a>
+    </div>
+
+    <script th:src='@{travel/js/jquery.js}'></script>
+    <script th:src='@{travel/js/jquery-migrate.min.js}'></script>
+    <script th:src='@{travel/js/plugins/core.min.js}'></script>
+    <script th:src='@{travel/js/plugins/datepicker.min.js}'></script>
+    <script th:src='@{travel/js/plugins/spin.min.js}'></script>
+    <script th:src='@{travel/js/plugins/spin.jquery.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.tooltipster.min.js}'></script>
+    <script th:src='@{travel/js/plugins/functions.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.blockUI.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.requestAnimationFrame.js}'></script>
+    <script th:src='@{travel/js/plugins/ilightbox.packed.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.easing.js}'></script>
+    <script th:src='@{travel/js/plugins/waypoints.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.isotope.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.masory.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.tooltipster.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jarallax.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.sticky-kit.min.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.stellar.min.js}'></script>
+    <script th:src='@{travel/js/plugins/custom_plugins.js}'></script>
+    <script th:src='@{travel/js/plugins/custom.js}'></script>
+    <script th:src='@{travel/js/plugins/custom_onepage.js}'></script>
+    <script th:src='@{travel/js/plugins/jarallax-video.js}'></script>
+    <script th:src='@{travel/js/plugins/jquery.cookie.js}'></script>
+</body>
+</html>
