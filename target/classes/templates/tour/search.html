@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns:th="http://www.thymeleaf.org" data-menu="leftalign"
-      xmlns:text-align="http://www.w3.org/1999/xhtml">
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org" data-menu="leftalign">
 
 <head>
 
@@ -47,7 +46,7 @@
 <!--主页-->
         <div class="ppb_wrapper  ">
             <div class="one withsmallpadding ppb_tour_search_background parallax withbg " style="text-align:center;height:800px;background-image:url(travel/upload/pexels-photo-225630.jpeg);background-position: center center;color:#ffffff;">
-                <div class="overlay_background" style="background:#000000;background:rgb(0,0,0,0);background:rgba(0,0,0,0);"></div>
+                <div class="overlay_background" style="background:#000000;background:rgb(0,0,0);background:rgba(0,0,0,0);"></div>
                 <div class="center_wrapper">
                     <div class="inner_content">
                         <div class="standard_wrapper">
@@ -56,16 +55,16 @@
                             <form id="tour_search_form" class="tour_search_form" method="get" th:action="@{/search}">
                                 <div class="tour_search_wrapper">
                                     <div class="one_fourth themeborder">
-                                        <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" />
+                                        <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" required="required"/>
                                         <span class="ti-search"></span>
                                         <div id="autocomplete" class="autocomplete" data-mousedown="false"></div>
                                     </div>
                                     <div class="one_fourth themeborder">
-                                        <input id="date" name="date" type="date"></input>
+                                        <input id="date" name="date" type="date" required="required"></input>
                                         <span class="ti-calendar"></span>
                                     </div>
                                     <div class="one_fourth themeborder">
-                                        <input id="budget" name="budget" type="text" placeholder="Max budget ex. 500" />
+                                        <input id="budget" name="budget" type="text" placeholder="Max budget ex. 500" required="required"/>
                                         <span>$</span>
                                     </div>
                                     <div class="one_fourth last themeborder">
@@ -98,7 +97,7 @@
                     <div id="15675891342113546341" class="portfolio_filter_wrapper gallery grid portrait four_cols" data-columns="4">
 
                         <div class="element grid baseline classic4_cols animated1" th:each="list : ${lists}">
-                            <div class="one_fourth gallery4 grid static filterable portfolio_type themeborder" style="background-image:url(travel/upload/Tokyo_Dollarphotoclub_72848283-copy-700x466.jpg);">
+                            <div class="one_fourth gallery4 grid static filterable portfolio_type themeborder" th:style="'background-image:url('+${list.getPictureUrl()}+');'">
                                 <a class="tour_image" th:href="@{/toshow}+${list.getId()}"></a>
                                 <div class="portfolio_info_wrapper">
                                     <div class="portfolio_info_content">
@@ -106,7 +105,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

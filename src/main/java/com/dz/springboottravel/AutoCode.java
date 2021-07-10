@@ -50,7 +50,7 @@ public class AutoCode {
         mpg.setPackageInfo(pc);
         //4、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("user","program"); // 设置要映射的表名,可以写多个
+        strategy.setInclude("budget"); // 设置要映射的表名,可以写多个
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true); // 自动lombok；

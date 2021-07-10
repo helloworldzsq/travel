@@ -24,7 +24,7 @@ public class editController {
     //实现文件上传
     @RequestMapping("/file")
     @ResponseBody
-    public JSONObject fileUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile file, HttpServletRequest request) throws IOException, JSONException {
+    public JSONObject fileUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile file, HttpServletRequest request) throws IOException, JSONException, JSONException, JSONException, JSONException, JSONException {
         //上传路径保存设置
 
         //获得SpringBoot当前项目的路径：System.getProperty("user.dir")

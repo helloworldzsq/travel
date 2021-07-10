@@ -38,38 +38,28 @@ public class ProgramController {
     @RequestMapping("/toprogram")
     public String toProgram(HttpSession session,Model model){
         String userName = (String)session.getAttribute("userName");
-        long res=0;
-        for (User user : userService.list()) {
-            if (user.getUsername().equals(userName))
-                res=user.getId();
-        }
-        List<Program> lists = programService.list();
-        List<Program> programs = new LinkedList<>();
-        for (Program list : lists) {
-            if (list.getUid()==res)
-                programs.add(list);
-        }
+        User user = userService.selectUser(userName);
+        Long id = user.getId();
+        //创建的项目
+        List<Program> programs = userService.createdProgarms(id);
         model.addAttribute("programs",programs);
         return "home/program";
     }
     //去添加页面
     @RequestMapping("/toadd")
     public String toAdd(HttpSession session, Model model){
-        long uid = 0;
         String userName =(String)session.getAttribute("userName");
-        System.out.println(userName);
-        List<User> list = userService.list();
-        for (User user : list) {
-            if (user.getUsername().equals(userName))
-                uid=user.getId();
-        }
-        model.addAttribute("uid",uid);
+        User user = userService.selectUser(userName);
+        model.addAttribute("uid",user.getId());
         return "home/add";
     }
     //添加项目
     @RequestMapping("/add")
-    public String add(Program program,@RequestParam("picture")MultipartFile file) throws IOException {
+    public String add(Program program,@RequestParam("picture")MultipartFile file,HttpSession session) throws IOException {
         PathUtil.savePath(program,file);
+        String userName =(String)session.getAttribute("userName");
+        User user = userService.selectUser(userName);
+        program.setJoined(user.getId()+" ");
         programService.save(program);
         return "redirect:/toprogram";
     }
@@ -92,68 +82,6 @@ public class ProgramController {
         PathUtil.savePath(program,file);
         programService.updateById(program);
         return "redirect:/toprogram";
-    }
-    //去申请者管理界面   这里的id是项目的id
-    @GetMapping("/tomanage/{id}")
-    public String touserManage(@PathVariable("id")long id,HttpSession session,Model model){
-        List<User> users = new LinkedList<>();
-        List<User> lists = userService.list();
-        for (User list : lists) {
-            User user =(User)session.getAttribute("user" + list.getId()+id);
-            if (user!=null)
-                users.add(user);
-        }
-        session.setAttribute("users",users);
-        model.addAttribute("pid",id);
-        model.addAttribute("users",users);
-        return "home/usermanage";
-    }
-    //申请者的id，项目id    接受申请者
-    @RequestMapping("/accept/{id}/{pid}")
-    public String accept(@PathVariable("id")long id,@PathVariable("pid")long pid,HttpSession session,Model model){
-        model.addAttribute("msg","已接受");
-        List<User> users =(List<User>)session.getAttribute("users");
-        //将消息存在session中
-        session.setAttribute("message"+id+pid,"accept");
-        Program program = programService.getById(pid);
-        session.setAttribute("program"+id+pid,program);
-        model.addAttribute("users",users);
-        return "home/usermanage";
-    }
-    //申请者的id,项目pid   拒绝并删除申请者
-    @GetMapping("/deleteuser/{id}/{pid}")
-    public String deleteuser(@PathVariable("id")long id,@PathVariable("pid")long pid, HttpSession session,Model model){
-        List<User> users =(List<User>)session.getAttribute("users");
-        User user = userService.getById(id);
-        users.remove(user);
-        session.setAttribute("message"+id+pid,"refuse");
-        model.addAttribute("users",users);
-        return "home/usermanage";
-    }
-    //去消息界面
-    @RequestMapping("/tomessage")
-    public String tomessage(HttpSession session,Model model){
-        String userName =(String)session.getAttribute("userName");
-        long id=0;
-        for (User user : userService.list()) {
-            if (user.getUsername().equals(userName))
-                id=user.getId();
-        }
-        for (Program program : programService.list()) {
-            String message =(String)session.getAttribute("message" + id + program.getId());
-            if (message!=null) {
-                if (message.equals("refuse")) {
-                    model.addAttribute("msg", "很遗憾，你想参加的“" + program.getTitle() + "”项目拒绝了你！");
-                    return "home/message";
-                }
-                else if (message.equals("accept")) {
-                    model.addAttribute("msg", "恭喜你，你想参加的“" + program.getTitle() + "”项目同意你加入！");
-                    return "home/message";
-                }
-            }
-        }
-        model.addAttribute("msg","暂无消息！");
-        return "home/message";
     }
 }
 

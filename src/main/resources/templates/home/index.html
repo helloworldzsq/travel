@@ -45,21 +45,22 @@
           <tr>
             <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">名称</span></th>
             <th><span class="glyphicon glyphicon-list"></span> <span class="visible-lg">地点</span></th>
-            <th class="hidden-sm"><span class="glyphicon glyphicon-tag"></span> <span class="visible-lg">开始时间</span></th>
-            <th class="hidden-sm"><span class="glyphicon glyphicon-comment"></span> <span class="visible-lg">结束时间</span></th>
-            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">预算</span></th>
-            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">预计人数</span></th>
+<!--            <th class="hidden-sm"><span class="glyphicon glyphicon-tag"></span> <span class="visible-lg">开始时间</span></th>-->
+<!--            <th class="hidden-sm"><span class="glyphicon glyphicon-comment"></span> <span class="visible-lg">结束时间</span></th>-->
+<!--            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">预算</span></th>-->
+<!--            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">预计人数</span></th>-->
           </tr>
           </thead>
           <tbody>
           <tr th:each="list : ${programs1}">
             <td class="article-title" th:text="${list.getTitle()}"></td>
             <td th:text="${list.getPlace()}"></td>
-            <td class="hidden-sm" th:text="${#dates.format(list.getStartTime(),'yyyy-MM-dd')}"></td>
-            <td class="hidden-sm" th:text="${#dates.format(list.getEndTime(),'yyyy-MM-dd')}"></td>
-            <td th:text="${list.getBudget()}"></td>
-            <td th:text="${list.getUserNum()}"></td>
+<!--            <td class="hidden-sm" th:text="${#dates.format(list.getStartTime(),'yyyy-MM-dd')}"></td>-->
+<!--            <td class="hidden-sm" th:text="${#dates.format(list.getEndTime(),'yyyy-MM-dd')}"></td>-->
+<!--            <td th:text="${list.getBudget()}"></td>-->
+<!--            <td th:text="${list.getUserNum()}"></td>-->
             <td><a th:href="@{/tomanage/}+${list.getId()}">人员管理</a></td>
+            <td><a th:href="@{/tobudget/}+${list.getId()}">账单管理</a></td>
           </tr>
           </tbody>
         </table>

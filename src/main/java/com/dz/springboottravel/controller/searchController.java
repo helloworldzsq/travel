@@ -17,15 +17,16 @@ public class searchController {
     @Autowired
     private ProgramService programService;
     @RequestMapping("/search")
-    public String Search(String keyword, String date, String budget, Model model) throws ParseException {
+    public String Search(String keyword, String time, String budget, Model model) throws ParseException {
         /**链式编程
          eq  =    地名相等
          ge  >=   开始日期大于搜索日期
          le  <=   预算小于等于搜索预算 **/
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date time = sdf.parse(date);
-        List<Program> lists = programService.query().eq("place", keyword).ge("start_time",time).le("budget", Integer.parseInt(budget)).list();
-        model.addAttribute("lists",lists);
+        Date date = sdf.parse(time);
+        List<Program> lists = programService.query().eq("place", keyword).ge("start_time",date).le("budget", Integer.parseInt(budget)).list();
+        model.addAttribute("lists", lists);
         return "tour/search";
     }
+
 }

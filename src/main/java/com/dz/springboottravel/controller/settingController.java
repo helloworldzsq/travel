@@ -18,10 +18,8 @@ public class settingController {
     @RequestMapping("/tosetting")
     public String toSetting(Model model, HttpSession session){
         String userName =(String)session.getAttribute("userName");
-        for (User user : userService.list()) {
-            if (user.getUsername().equals(userName))
-               model.addAttribute("user",user);
-        }
+        User user = userService.selectUser(userName);
+        model.addAttribute("user",user);
         return "home/setting";
     }
     @RequestMapping("/toSetUpdate{id}")
@@ -32,7 +30,6 @@ public class settingController {
     }
     @RequestMapping("/SetUpdate")
     public String update(User user,Model model){
-        System.out.println(user.toString());
         userService.updateById(user);
         model.addAttribute("user",user);
         return "home/setting";

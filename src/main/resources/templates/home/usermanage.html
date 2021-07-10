@@ -48,10 +48,12 @@
                 <td th:text="${list.getName()}"></td>
                 <td th:text="${list.getEmail()}"></td>
                 <td th:text="${list.getTelephone()}"></td>
-                <td th:if="not ${#lists.isEmpty(msg)}" th:text="${msg}"></td>
-                <td th:if="${#lists.isEmpty(msg)}">
+                <td th:if="${session.get('accept'+list.getId()+pid)}!=null" th:text="${msg1}"></td>
+                <td th:if="${session.get('refuse'+list.getId()+pid)}!=null" th:text="${msg2}" ></td>
+                <td th:if="${msg}!=null">
                   <a th:href="@{'/accept/'+${list.getId()}+'/'+${pid}}">接受</a>
-                  <a th:href="@{'/deleteuser/'+${list.getId()}+'/'+${pid}}">删除</a></td>
+                  <a th:href="@{'/deleteuser/'+${list.getId()}+'/'+${pid}}">拒绝</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -84,11 +86,11 @@
 <script th:src="@{/homepage/js/admin-scripts.js}"></script>
 <script>
 //是否确认删除
-$(function(){   
+$(function(){
 	$("#main table tbody tr td a").click(function(){
 		var name = $(this);
-		var id = name.attr("rel"); //对应id  
-		if (event.srcElement.outerText == "删除") 
+		var id = name.attr("rel"); //对应id
+		if (event.srcElement.outerText == "删除")
 		{
 			if(window.confirm("此操作不可逆，是否确认？"))
 			{
@@ -96,14 +98,14 @@ $(function(){
 					type: "POST",
 					url: "/Article/delete",
 					data: "id=" + id,
-					cache: false, //不缓存此页面   
+					cache: false, //不缓存此页面
 					success: function (data) {
 						window.location.reload();
 					}
 				});
 			};
 		};
-	});   
+	});
 });
 </script>
 </body>

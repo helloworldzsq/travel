@@ -88,21 +88,22 @@
                                             <p>
                                                 <label> Full Name
                                                     <br />
-                                                    <span class="wpcf7-form-control-wrap your-name"><input type="text" name="name"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="John Doe" required="required" /></span> </label>
+                                                    <span class="wpcf7-form-control-wrap your-name">
+                                                        <input type="text" name="name" id="name"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="John Doe" required="required" /></span> </label>
                                             </p>
                                             <p>
                                                 <label> Email Address
                                                     <br />
-                                                    <span class="wpcf7-form-control-wrap your-email"><input type="email" name="email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="sample@yourcompany.com" required="required"/></span> </label>
+                                                    <span class="wpcf7-form-control-wrap your-email"><input type="email"  id="email" name="email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="sample@yourcompany.com" required="required" /></span> </label>
                                             </p>
                                             <p>
                                                 <label> Phone Number
                                                     <br />
-                                                    <span class="wpcf7-form-control-wrap tel-729"><input type="tel" name="telephone"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" required="required"/></span> </label>
+                                                    <span class="wpcf7-form-control-wrap tel-729"><input type="tel" name="telephone" id="telephone" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" required="required" /></span> </label>
                                             </p>
                                             <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                                             <p>
-                                                <input type="submit" value="Book This Tour" class="wpcf7-form-control wpcf7-submit" />
+                                                <input type="submit" value="Book This Tour" class="wpcf7-form-control wpcf7-submit" onclick="return check()"/>
                                             </p>
                                             <div class="wpcf7-response-output wpcf7-display-none"></div>
                                         </form>
@@ -164,7 +165,7 @@
             <!-- End of thread -->
             <div style="height:10px"></div>
             </div>
-            </div>      
+            </div>
         </div>
     </div>
     <!-- End main content -->
@@ -267,5 +268,35 @@
         };
         /* ]]> */
     </script>
+<script>
+    function check() {
+        var name = $("#name").val();
+        var telephone=$("#telephone").val();
+        var email=$("#email").val();
+        var reg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (name == null || name == "") {
+            $("#name").css("border-color", "red");
+            return false;
+        }
+        else {
+            $("#name").css("border-color", "blue");
+        }
+        if (telephone == null || content == "") {
+            $("#telephone").css("border-color", "red");
+            return false;
+        }
+        else {
+            $("#telephone").css("border-color", "blue");
+        }
+        if (email == null || email == "" || email.search(reg) == -1) {
+            $("#email").css("border-color", "red");
+            return false;
+        }
+        else {
+            $("#email").css("border-color", "blue");
+        }
+        return true;
+    }
+</script>
 </body>
 </html>

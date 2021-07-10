@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="format-detection" content="telephone=no">
-  
+
     <link rel='stylesheet' th:href="@{travel/css/icons.css}" type='text/css' media='all' />
     <link rel='stylesheet' th:href='@{travel/css/tooltipster.css}' type='text/css' media='all' />
     <link rel='stylesheet' th:href='@{travel/css/tooltipster-light.css}' type='text/css' media='all' />
@@ -70,12 +70,6 @@
             background-color:#969696;
             color:#fff;
         }
-        /*#pages ul .prev a{*/
-        /*    background:#fff url(../images/icons.png) no-repeat -52px -217px;*/
-        /*}*/
-        /*#pages ul .next a{*/
-        /*    background:#fff url(../images/icons.png) no-repeat -75px -247px;*/
-        /*}*/
         #pages ul .prev a:hover{
             background-position:-76px -217px;
         }
@@ -101,23 +95,23 @@
                         <div class="standard_wrapper">
                             <h2 class="ppb_title" style="color:#ffffff;">Where do you want to go?</h2>
                             <div class="page_tagline" style="color:#ffffff;">Trips, experiences, and places. All in one service.</div>
-                            <form id="tour_search_form" class="tour_search_form" method="get" th:action="@{/search}">
+                            <form id="tour_search_form" class="tour_search_form" method="post" th:action="@{/search}">
                                 <div class="tour_search_wrapper">
                                     <div class="one_fourth themeborder">
-                                        <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" />
+                                        <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" required="required"/>
                                         <span class="ti-search"></span>
                                         <div id="autocomplete" class="autocomplete" data-mousedown="false"></div>
                                     </div>
                                     <div class="one_fourth themeborder">
-                                        <input name="date" type="date" th:value="${#dates.format(date,'yyyy-MM-dd')}"></input>
+                                        <input name="time" type="date" id="time" th:value="${#dates.format(date,'yyyy-MM-dd')}" required="required"></input>
                                         <span class="ti-calendar"></span>
                                     </div>
                                     <div class="one_fourth themeborder">
-                                        <input id="budget" name="budget" type="text" placeholder="Max budget ex. 500" />
+                                        <input id="budget" name="budget"  type="text" placeholder="Max budget ex. 500" required="required" />
                                         <span>$</span>
                                     </div>
                                     <div class="one_fourth last themeborder">
-                                        <input id="tour_search_btn" type="submit" class="button" value="Search" />
+                                        <input id="tour_search_btn" type="submit" class="button" value="Search"/>
                                     </div>
                                     <br class="clear" />
                                 </div>

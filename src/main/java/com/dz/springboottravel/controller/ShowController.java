@@ -60,60 +60,71 @@ public class ShowController {
     @RequestMapping("/toshow{id}")
     public String toshow(@PathVariable("id")Long id,HttpSession session,Model model){
         session.setAttribute("id",id);
-        for (Program program : programService.list()) {
-            if (program.getId()==id){
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                String start = simpleDateFormat.format(program.getStartTime());
-                String end = simpleDateFormat.format(program.getEndTime());
-                String time=start+"-"+end;
-                model.addAttribute("time",time);
-                model.addAttribute("program",program);
-            }
-        }
+        String userName =(String)session.getAttribute("userName");
+        User user = userService.selectUser(userName);
+        Program program = programService.getById(id);
+        String time = dataFormat(id);
+        model.addAttribute("time",time);
+        model.addAttribute("program",program);
         return "tour/show";
+    }
+//    将日期格式化
+    public String dataFormat(Long id){
+        //根据id查询项目
+        Program program = programService.getById(id);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String start = simpleDateFormat.format(program.getStartTime());
+        String end = simpleDateFormat.format(program.getEndTime());
+        String time=start+"-"+end;
+        return time;
     }
     @RequestMapping("/submit")
     public String tosubmit(String name,String email,String telephone, HttpSession session, Model model){
         String userName =(String)session.getAttribute("userName");
         //获得项目id
-        long id =(long)session.getAttribute("id");
+        long pid =(long)session.getAttribute("id");
+        //创建用户的id
+        Long uid = programService.getById(pid).getUid();
+        //项目创建者的名称
+        String username = userService.getById(uid).getUsername();
         //没有登录，先登录
         if (userName==null || userName.equals("")) {
-            for (Program program : programService.list()) {
-                if (program.getId()==id){
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                    String start = simpleDateFormat.format(program.getStartTime());
-                    String end = simpleDateFormat.format(program.getEndTime());
-                    String time=start+"-"+end;
-                    model.addAttribute("time",time);
-                    model.addAttribute("program",program);
-                }
-            }
+            Program program = programService.getById(pid);
+            String time = dataFormat(pid);
+            model.addAttribute("time",time);
+            model.addAttribute("program",program);
             model.addAttribute("msg", "请先登录！");
             return "tour/show";
         }
+        if (userName.equals(username)){
+            Program program = programService.getById(pid);
+            String time = dataFormat(pid);
+            model.addAttribute("time",time);
+            model.addAttribute("program",program);
+            model.addAttribute("msg", "不能加入自己创建的项目");
+            return "tour/show";
+        }
         //更新用户信息
-        List<User> lists = userService.list();
-        for (User list : lists) {
-            if (list.getUsername().equals(userName)){
-                 list.setName(name);
-                 list.setEmail(email);
-                 list.setTelephone(telephone);
-                 userService.updateById(list);
-                 //第一个id是用户的id，第二个是项目的id
-                 session.setAttribute("user"+list.getId()+id,list);
-            }
+        User user = userService.selectUser(userName);
+        user.setName(name);
+        user.setEmail(email);
+        user.setTelephone(telephone);
+        userService.updateById(user);
+        //将想参加的人存在数据库中
+        List<User> users = programService.wantedList(pid);
+        if (users.contains(user)) {
+            Program program = programService.getById(pid);
+            String time = dataFormat(pid);
+            model.addAttribute("time",time);
+            model.addAttribute("program",program);
+            model.addAttribute("msg", "已提交申请，请勿重复提交");
+            return "tour/show";
         }
-        for (Program program : programService.list()) {
-            if (program.getId()==id){
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                String start = simpleDateFormat.format(program.getStartTime());
-                String end = simpleDateFormat.format(program.getEndTime());
-                String time=start+"-"+end;
-                model.addAttribute("time",time);
-                model.addAttribute("program",program);
-            }
-        }
+        programService.addWanted(user.getId(), pid);
+        Program program = programService.getById(pid);
+        String time = dataFormat(pid);
+        model.addAttribute("time",time);
+        model.addAttribute("program",program);
         model.addAttribute("msg","提交成功！");
         return "tour/show";
     }

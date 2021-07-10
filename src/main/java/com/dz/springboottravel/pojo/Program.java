@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author dz
@@ -48,7 +48,11 @@ public class Program implements Serializable {
 
     private Integer created;
 
-    private Integer joined;
+    private String joined;
+    //想加入的人
+    private String wanted;
+
+    private String refused;
 
     private String info;
 

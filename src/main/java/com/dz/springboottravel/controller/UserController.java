@@ -62,6 +62,7 @@ public class UserController {
             if (user1.getUsername().equals(user.getUsername()) &&
                 user1.getPassword().equals(user.getPassword())){
                 session.setAttribute("userName",user.getUsername());
+                User user2 = userService.selectUser(user.getUsername());
                 return "redirect:/";
             }
         }
@@ -72,35 +73,29 @@ public class UserController {
     @RequestMapping("/tohome")
     public String toHome(HttpSession session,Model model){
         String userName = (String)session.getAttribute("userName");
-        long res=0;
-        for (User user : userService.list()) {
-            if (user.getUsername().equals(userName))
-                res=user.getId();
-        }
-        List<Program> lists = programService.list();
-        List<Program> programs1 = new LinkedList<>();
-        List<Program> programs2 = new LinkedList<>();
-        for (Program list : lists) {
-            Program program =(Program) session.getAttribute("program" + res + list.getId());
-            if (program!=null){
-                programs2.add(program);
-            }
-            if (list.getUid()==res)
-                programs1.add(list);
-        }
-        int createNum = programs1.size();
-        int joinNum = programs2.size();
+        User user = userService.selectUser(userName);
+        Long id = user.getId();
+        //创建的项目
+        List<Program> createdProgarms = userService.createdProgarms(id);
+        model.addAttribute("createdProgarms",createdProgarms);
+        //加入的项目
+        List<Program> joinedPrograms = userService.joinedPrograms(id);
+        model.addAttribute("joinedPrograms",joinedPrograms);
+
+        int createNum = createdProgarms.size();
+        int joinNum = joinedPrograms.size();
+
         model.addAttribute("createNum",createNum);
         model.addAttribute("joinNum",joinNum);
-        model.addAttribute("programs1",programs1);
-        model.addAttribute("programs2",programs2);
+        model.addAttribute("programs1",createdProgarms);
+        model.addAttribute("programs2",joinedPrograms);
         return "home/index";
     }
     //注销
     @RequestMapping("/logout")
     public String logout(HttpSession session){
           session.removeAttribute("userName");
-          return "index";
+          return "redirect:/";
     }
 }
 
