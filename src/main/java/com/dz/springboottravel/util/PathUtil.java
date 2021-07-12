@@ -1,6 +1,8 @@
 package com.dz.springboottravel.util;
 
 import com.dz.springboottravel.pojo.Program;
+
+import org.junit.Test;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,8 +14,9 @@ import java.util.UUID;
 public class PathUtil {
       //保存地址的方法
       public static void savePath(Program program,MultipartFile file) throws IOException {
-          //获得SpringBoot当前项目的路径：System.getProperty("user.dir")
-          String path= "D:/Google/springboot-travel/src/main/resources/static/image/";
+          //获得SpringBoot当前项目的路径：
+          String property = System.getProperty("user.dir");
+          String path= property+"/src/main/resources/static/image/";
           int len = path.length()-6;
           //按照月份进行分类：
           Calendar instance = Calendar.getInstance();
@@ -32,5 +35,11 @@ public class PathUtil {
           file.transferTo(newfile);
           String substring = path.substring(len);
           program.setPictureUrl(substring+"/"+filename);
+      }
+      @Test
+    public void test(){
+          String property = System.getProperty("user.dir");
+          String path= property+"/src/main/resources/static/image/";
+          System.out.println(path);
       }
 }

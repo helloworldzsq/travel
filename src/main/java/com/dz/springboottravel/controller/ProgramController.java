@@ -63,6 +63,15 @@ public class ProgramController {
         programService.save(program);
         return "redirect:/toprogram";
     }
+////添加项目
+//@RequestMapping("/add")
+//public String add(Program program,HttpSession session) throws IOException {
+//    String userName =(String)session.getAttribute("userName");
+//    User user = userService.selectUser(userName);
+//    program.setJoined(user.getId()+" ");
+//    programService.save(program);
+//    return "redirect:/toprogram";
+//}
     //删除项目
     @RequestMapping("/delete{id}")
     public String delete(@PathVariable("id")Integer id){
@@ -83,5 +92,11 @@ public class ProgramController {
         programService.updateById(program);
         return "redirect:/toprogram";
     }
+////更新
+//@RequestMapping("/update")
+//public String update(Program program) throws IOException {
+//    programService.updateById(program);
+//    return "redirect:/toprogram";
+//}
 }
 

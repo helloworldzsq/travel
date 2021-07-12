@@ -140,7 +140,7 @@
                 <div class="standard_wrapper">
                     <div id="15675891342113546341" class="portfolio_filter_wrapper gallery grid portrait four_cols" data-columns="4">
 
-                        <div class="element grid baseline classic4_cols animated1" th:each="list : ${programs}">
+                        <div class="element grid baseline classic4_cols animated1" th:each="list:${programs}">
                             <div class="one_fourth gallery4 grid static filterable portfolio_type themeborder" th:style="'background-image:url('+${list.getPictureUrl()}+');'">
                                 <a class="tour_image" th:href="@{/toshow}+${list.getId()}"></a>
                                 <div class="portfolio_info_wrapper">

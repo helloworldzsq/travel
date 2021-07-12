@@ -8,6 +8,7 @@ import com.dz.springboottravel.mapper.UserMapper;
 import com.dz.springboottravel.pojo.BaseBudget;
 import com.dz.springboottravel.pojo.Budget;
 import com.dz.springboottravel.mapper.BudgetMapper;
+import com.dz.springboottravel.pojo.DetailBudget;
 import com.dz.springboottravel.pojo.User;
 import com.dz.springboottravel.service.BudgetService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -88,8 +89,21 @@ public class BudgetServiceImpl extends ServiceImpl<BudgetMapper, Budget> impleme
     }
 
     @Override
+    public List<DetailBudget> DetailBudget(Long id) {
+        List<Budget> budgets = budgetList(id);
+        List<DetailBudget> detailBudgets = new LinkedList<>();
+        for (Budget budget : budgets) {
+            DetailBudget detailBudget = new DetailBudget(budget.getPlace(), budget.getDate(), budget.getCost(), budget.getPeople());
+           detailBudgets.add(detailBudget);
+        }
+        return detailBudgets;
+    }
+
+
+    @Override
     public void excelExport(HttpServletResponse response,Long id) throws IOException {
         List<BaseBudget> list = toAccount(id);
+        List<DetailBudget> budgets = DetailBudget(id);
         String fileName = "用户账单";
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
         response.setCharacterEncoding("utf-8");
@@ -97,10 +111,14 @@ public class BudgetServiceImpl extends ServiceImpl<BudgetMapper, Budget> impleme
         ServletOutputStream out = response.getOutputStream();
         ExcelWriter writer = new ExcelWriter(out, ExcelTypeEnum.XLS,true);
         Sheet sheet = new Sheet(1,0,BaseBudget.class);
+        Sheet sheet1 = new Sheet(2, 0, DetailBudget.class);
         //设置自适应宽度
         sheet.setAutoWidth(Boolean.TRUE);
+        sheet1.setAutoWidth(Boolean.TRUE);
         sheet.setSheetName("用户账单");
+        sheet1.setSheetName("账单汇总");
         writer.write(list,sheet);
+        writer.write(budgets, sheet1);
         writer.finish();
         out.flush();
         response.getOutputStream().close();
