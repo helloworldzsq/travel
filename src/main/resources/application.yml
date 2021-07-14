@@ -2,10 +2,21 @@ spring:
   mvc:
     format:
       date: dd-MM-yyyy
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: false
+  application:
+    name: my_nacos
   datasource:
     username: root
-    password: root
-    url: jdbc:mysql://localhost/travel?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    password: 12345678
+    url: jdbc:mysql://localhost/newtravel?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
@@ -15,4 +26,14 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: com.dz.springboottravel.pojo
   mapper-locations: classpath:/mapper/*.xml
+
+# 把所有的窗口打开
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 8081
 
