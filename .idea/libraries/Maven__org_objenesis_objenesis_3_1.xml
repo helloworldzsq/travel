@@ -1,13 +1,13 @@
 <component name="libraryTable">
-  <library name="Maven: org.objenesis:objenesis:3.1">
+  <library name="Maven: com.github.jsqlparser:jsqlparser:3.2">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/3.1/objenesis-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JAVEE_DEV/apache-maven-3.6.1/maven-repo/com/github/jsqlparser/jsqlparser/3.2/jsqlparser-3.2.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/3.1/objenesis-3.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JAVEE_DEV/apache-maven-3.6.1/maven-repo/com/github/jsqlparser/jsqlparser/3.2/jsqlparser-3.2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/3.1/objenesis-3.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JAVEE_DEV/apache-maven-3.6.1/maven-repo/com/github/jsqlparser/jsqlparser/3.2/jsqlparser-3.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -3,9 +3,9 @@
 <mapper namespace="com.dz.springboottravel.mapper.UserMapper">
 
     <select id="selectUser" resultType="User">
-        select * from travel.user where username=#{name};
+        select * from newtravel.user where username=#{name};
     </select>
     <select id="selectUserByName" resultType="User">
-        select * from travel.user where name=#{name};
+        select * from newtravel.user where name=#{name};
     </select>
 </mapper>
