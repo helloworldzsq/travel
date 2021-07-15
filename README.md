@@ -1,51 +1,6 @@
 # 旅游项目
 
-- 创建项目时，使导入的数据库依赖失效
-
-```java
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
-```
-
-
-
-1. 用户有哪些属性
-
-- 手机号/邮箱
-- 密码
-- id
-- 项目（一对多）
-  - 自己创建的项目  create
-  - 加入的项目   join
-
-2. 项目的属性
-
-- user （created，joined）
-- 项目名称
-- 地点
-- 时间（开始时间，结束时间）
-- 估计费用
-- 详细介绍
-- 预计人数
-
-
-
-用户有创建的，加入的两个属性，对表应一张
-
-项目有创建的用户，加入的用户。
-
-
-
-接下来要解决的问题
-
-- 旅游项目的详细信息（markdown） 解决
-- 想参加项目的人，提交后，项目的创建者如何接收。  将用户的id和项目的id存在session中，确定惟一的一个值。  解决
-- 传递消息  解决
-- 同意后 将项目信息展示在主页中。 解决
-- 分页  解决
-- 用户信息的展示
-- 帮助文档
-
-
+- 记录一些在创建项目过程中解决的一些问题
 
 ### 1.在thymeleaf中使用restful风格
 
@@ -334,5 +289,11 @@ public String page(@PathVariable("num")int num,Model model){
         model.addAttribute("lists",lists);
         return "tour/search";
     }
+```
+
+### 6.创建项目时，使导入的数据库依赖失效
+
+```java
+@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 ```
 
